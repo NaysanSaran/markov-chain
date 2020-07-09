@@ -1,4 +1,4 @@
-# Project Title
+# Markov Chain Transition Diagrams in Python
 
 Simple Markov Chain visualization module in Python. Only requires **matplotlib** and **numpy** to work.
 
