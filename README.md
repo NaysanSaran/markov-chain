@@ -67,6 +67,8 @@ mc.draw("../img/markov-chain-four-states.png")
 
 [Naysan Saran](naysan.ca)
 
+Link to my [blog](https://naysan.ca/2020/07/08/drawing-state-transition-diagrams-in-python/).
+
 ## License
 
 This project is licensed under the GPL V3 licence.
