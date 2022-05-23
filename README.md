@@ -12,7 +12,7 @@ The current version works with 2 to 4 states.
 
 * matplotlib
 * numpy
-* TK enter
+* Tkinter standard GUI library for Python
 
 ### Installation
 
@@ -24,7 +24,7 @@ from markovchain import MarkovChain
 
 #### 2 X 2 Matrix
 
-Dynamic Random Entery by the user:
+Dynamic Random Entery by the user.
 
 
 #### 3-state Markov chain demo
@@ -42,7 +42,7 @@ mc.draw("../img/markov-chain-three-states.png")
 ## Author
 
 Credit: [Naysan Saran](naysan.ca)
-Modification: M Shaf Khattak
+Modification: [M Shaf Khattak].(https://github.com/SHaf373)
 
 Link to my [blog](https://naysan.ca/2020/07/08/drawing-state-transition-diagrams-in-python/).
 
