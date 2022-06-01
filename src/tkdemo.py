@@ -18,6 +18,8 @@ label = ttk.Label(tk, text="UP to 4x4 Markov Chain Draw"
                  foreground = "white", background = "black"
                  )
 label.pack()
-tk.focus_set()
-tk.grab_set()
-tk.mainloop()
+a = StringVar()
+a.set("3")
+print(a.get())
+for i in range(int(a.get())):
+    print(i)
