@@ -25,10 +25,18 @@ win1 = Frame(root)
 frame1 = Frame(win1)
 
 def drawModel():
-    M = np.column_stack(rows)
+    #M = np.column_stack(rows)
     #mc = MarkovChain(M, ['A', 'B', 'C', 'D'])
     #mc.draw()
-    messagebox.showinfo('Message', 'You clicked the Submit button!')
+    M = []
+    for i in range(0,int(row_col.get())):
+        for j in range(0,int(row_col.get())):
+            widget = frame1.grid_slaves(row=i, column=j)[0].get()
+            M.append(widget)
+            #print(M[i][j])
+    M = np.array(M)
+    print(f'Type(a) = {type(M)}.  a = {M}')
+#    messagebox.showinfo('Message', 'You clicked the Submit button!')
 
 def callback(row_col):
     cont = int(row_col.get()) + 0
