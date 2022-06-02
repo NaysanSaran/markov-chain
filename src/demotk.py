@@ -1,4 +1,5 @@
 from cProfile import label
+from calendar import c
 from re import T
 import numpy as np 
 import tkinter as tk
@@ -28,14 +29,24 @@ def drawModel():
     #M = np.column_stack(rows)
     #mc = MarkovChain(M, ['A', 'B', 'C', 'D'])
     #mc.draw()
-    M = []
+    M = np.zeros((int(row_col.get()),int(row_col.get())))
+    cols = []
+    rows = []
     for i in range(0,int(row_col.get())):
         for j in range(0,int(row_col.get())):
             widget = frame1.grid_slaves(row=i, column=j)[0].get()
-            M.append(widget)
+            cols.append(widget)
+            #M.append(widget)
+            #print(widget)
             #print(M[i][j])
-    M = np.array(M)
+        rows.append(cols)
+        cols = []
+    #print (rows)
+    M = np.vstack(rows)
     print(f'Type(a) = {type(M)}.  a = {M}')
+    mc = MarkovChain(M, ['1', '2', '3'])
+    mc.draw("../img/markov-chain-tree-states.png")    
+    
 #    messagebox.showinfo('Message', 'You clicked the Submit button!')
 
 def callback(row_col):
