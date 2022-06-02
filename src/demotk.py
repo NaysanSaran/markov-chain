@@ -20,38 +20,42 @@ root.grab_set()
 row_col = StringVar()
 #row_col.set("3")
 
-
 win0 = Frame(root)
 win1 = Frame(root)
 frame1 = Frame(win1)
 
 def drawModel():
-    #M = np.column_stack(rows)
-    #mc = MarkovChain(M, ['A', 'B', 'C', 'D'])
-    #mc.draw()
     M = np.zeros((int(row_col.get()),int(row_col.get())))
+    dimension = int(row_col.get())
     cols = []
     rows = []
+    state_list = []
     for i in range(0,int(row_col.get())):
         for j in range(0,int(row_col.get())):
-            widget = frame1.grid_slaves(row=i, column=j)[0].get()
+            widget = float(frame1.grid_slaves(row=i, column=j)[0].get())
             cols.append(widget)
             #M.append(widget)
             #print(widget)
             #print(M[i][j])
         rows.append(cols)
         cols = []
-    #print (rows)
+    state_list = list(range(1,int(row_col.get())+1))
     M = np.vstack(rows)
-    print(f'Type(a) = {type(M)}.  a = {M}')
-    mc = MarkovChain(M, ['1', '2', '3'])
-    mc.draw("../img/markov-chain-tree-states.png")    
+    #N = np.c_[np.zeros((dimension,1)),M.cumsum(axis=1)]
+    a = M.cumsum(axis=1)
+    #print("a : ", a[:,-1])
+    res = (a[:,-1]) == np.ones(dimension)
+    print("resultado ", np.all(res))
+    if np.all(res):
+        mc = MarkovChain(M, state_list)
+        mc.draw("../img/markov-chain-%dx%d.png" % (dimension,dimension))
+        messagebox.showinfo("Drawing", "Drawing successful")
+    else:
+        messagebox.showinfo("Drawing", "Please enter a valid transition matrix")
     
-#    messagebox.showinfo('Message', 'You clicked the Submit button!')
-
 def callback(row_col):
     cont = int(row_col.get()) + 0
-    if cont >= 2 and  cont <= 4:
+    if cont >= 2 and  cont <= 4 and row_col != "":
         for widget in frame1.winfo_children():
             widget.destroy()
         for j in range(int(row_col.get())):
@@ -85,6 +89,7 @@ win2 = Frame(root)
 win2.pack(side="top", fill="both", expand=True)
 label2 = Label(win2, text="Enter the state labels:", font=myFont)
 label2.pack()
+frame1.pack()
 buttonDraw = Button(win2, text = "Draw!", font = myFont, command=lambda: drawModel(), bg = 'light blue', height = 2 ,width = 8)
 buttonDraw.pack()
 root.mainloop()
