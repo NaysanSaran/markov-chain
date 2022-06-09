@@ -12,6 +12,7 @@ The current version works with 2 to 4 states.
 
 * matplotlib
 * numpy
+* Tkinter standard GUI library for Python
 
 ### Installation
 
@@ -21,15 +22,9 @@ Copy the files src/node.py and src/markovchain.py in your script directory. Then
 from markovchain import MarkovChain
 ```
 
-#### 2-state Markov chain demo
+#### 2 X 2 Matrix
 
-```
-P = np.array([[0.8, 0.2], [0.1, 0.9]]) # Transition matrix
-mc = MarkovChain(P, ['1', '2'])
-mc.draw("../img/markov-chain-two-states.png")
-```
-
-![two state markov chain transition diagram python](https://github.com/NaysanSaran/markov-chain/blob/master/img/markov-chain-two-states.png)
+Dynamic Random Entery by the user.
 
 
 #### 3-state Markov chain demo
@@ -44,28 +39,10 @@ mc = MarkovChain(P, ['A', 'B', 'C'])
 mc.draw("../img/markov-chain-three-states.png")
 ```
 
-![three state markov chain transition diagram python](https://github.com/NaysanSaran/markov-chain/blob/master/img/markov-chain-three-states.png)
-
-
-#### 4-state Markov chain demo
-
-```
-P = np.array([
-    [0.8, 0.1, 0.1, 0.0],
-    [0.1, 0.7, 0.0, 0.2],
-    [0.1, 0.0, 0.7, 0.2],
-    [0.1, 0.0, 0.7, 0.2]
-])
-mc = MarkovChain(P, ['1', '2', '3', '4'])
-mc.draw("../img/markov-chain-four-states.png")
-```
-
-![four state markov chain transition diagram python](https://github.com/NaysanSaran/markov-chain/blob/master/img/markov-chain-four-states.png)
-
-
 ## Author
 
-[Naysan Saran](naysan.ca)
+Credit: [Naysan Saran](naysan.ca)
+Modification: [M Shaf Khattak].(https://github.com/SHaf373)
 
 Link to my [blog](https://naysan.ca/2020/07/08/drawing-state-transition-diagrams-in-python/).
 
