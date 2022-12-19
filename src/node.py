@@ -1,14 +1,15 @@
 import numpy as np
-import matplotlib.patches as mpatches 
+import matplotlib.patches as mpatches
 from matplotlib.collections import PatchCollection
 import matplotlib.pyplot as plt
 
 class Node():
-    
+
     def __init__(
-        self, center, radius, label, 
-        facecolor='#2693de', edgecolor='#e6e6e6',
-        ring_facecolor='#a3a3a3', ring_edgecolor='#a3a3a3'
+        self, center, radius, label,
+        facecolor='#2653de', edgecolor='#e6e6e6',
+        ring_facecolor='#a3a3a3', ring_edgecolor='#a3a3a3',
+        **kwargs
         ):
         """
         Initializes a Markov Chain Node(for drawing purposes)
@@ -24,42 +25,42 @@ class Node():
         # For convinience: x, y coordinates of the center
         self.x = center[0]
         self.y = center[1]
-        
+
         # Drawing config
         self.node_facecolor = facecolor
         self.node_edgecolor = edgecolor
-        
+
         self.ring_facecolor = ring_facecolor
         self.ring_edgecolor = ring_edgecolor
-        self.ring_width = 0.03  
-        
+        self.ring_width = 0.03
+
         self.text_args = {
-            'ha': 'center', 
-            'va': 'center', 
-            'fontsize': 16
+            'ha': 'center',
+            'va': 'center',
+            'fontsize': kwargs.get("node_fontsize", 12)
         }
-    
-    
+
+
     def add_circle(self, ax):
         """
         Add the annotated circle for the node
         """
         circle = mpatches.Circle(self.center, self.radius)
         p = PatchCollection(
-            [circle], 
-            edgecolor = self.node_edgecolor, 
+            [circle],
+            edgecolor = self.node_edgecolor,
             facecolor = self.node_facecolor
         )
         ax.add_collection(p)
         ax.annotate(
-            self.label, 
-            xy = self.center, 
-            color = '#ffffff', 
+            self.label,
+            xy = self.center,
+            color = '#ffffff',
             **self.text_args
         )
-        
-        
-    def add_self_loop(self, ax, prob=None, direction='up'):
+
+
+    def add_self_loop(self, ax, prob=None, direction='up', annotate = True, percentages = False):
         """
         Draws a self loop
         """
@@ -79,13 +80,13 @@ class Node():
             prob_y = self.y - 1.4*self.radius
             x_cent = ring_x + self.radius - (self.ring_width/2)
             y_cent = ring_y + 0.15
-            
+
         # Add the ring
         ring = mpatches.Wedge(
-            (ring_x, ring_y), 
-            self.radius, 
-            start, 
-            angle, 
+            (ring_x, ring_y),
+            self.radius,
+            start,
+            angle,
             width = self.ring_width
         )
         # Add the triangle (arrow)
@@ -96,13 +97,14 @@ class Node():
         arrow  = plt.Polygon([left, right, bottom, left])
 
         p = PatchCollection(
-            [ring, arrow], 
-            edgecolor = self.ring_edgecolor, 
+            [ring, arrow],
+            edgecolor = self.ring_edgecolor,
             facecolor = self.ring_facecolor
         )
         ax.add_collection(p)
-        
-        # Probability to add?
-        if prob:
-            ax.annotate(str(prob), xy=(self.x, prob_y), color='#000000', **self.text_args)
 
+        # Probability to add?
+        if prob and annotate:
+            text = f"{prob*100 if percentages else prob:.1f}".rstrip("0").rstrip(".")
+            text += "%" if percentages else ""
+            ax.annotate(text, xy=(self.x, prob_y), color='#000000', **self.text_args)
