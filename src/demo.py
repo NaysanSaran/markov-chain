@@ -33,6 +33,7 @@ def main():
         [0.1, 0.0, 0.7, 0.2],
         [0.1, 0.0, 0.7, 0.2]
     ])
+    print (P)
     mc = MarkovChain(P, ['1', '2', '3', '4'])
     mc.draw("../img/markov-chain-four-states.png")
  

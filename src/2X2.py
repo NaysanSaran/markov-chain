@@ -12,15 +12,13 @@ def main():
     P = np.array([[a, b], [c, d]]) # Transition matrix
     mc = MarkovChain(P, ['A', 'B'])
     mc.draw()
+    
+    
 def tkinter():
     global a11
     global a12
     global a21
     global a22
-     
-
-
-    
     
     root = Tk()
     root.title('2 X 2 Transition Matrix')
@@ -65,4 +63,3 @@ def tkinter():
     root.mainloop()
 
 tkinter()
-
