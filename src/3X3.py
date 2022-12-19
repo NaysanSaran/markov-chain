@@ -9,4 +9,4 @@ P = np.array([
     [0.1, 0.7, 0.2],
 ])
 mc = MarkovChain(P, ['A', 'B', 'C'])
-mc.draw() 
+mc.draw()
