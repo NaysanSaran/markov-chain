@@ -68,6 +68,7 @@ mc = MarkovChain(P, ['1', '2', '3', '4'])
 mc.draw("../img/markov-chain-four-states.png")
 ```
 
+![Four-state Markov-Chain](https://github.com/NaysanSaran/markov-chain/blob/master/img/markov-chain-four-states.png)
 
 #### 5-state Markov chain demo
 
@@ -83,6 +84,7 @@ mc = MarkovChain(P, ['1', '2', '3', '4', '5'])
 mc.draw("../img/markov-chain-five-states.png")
 ```
 
+![Five-state Markov-Chain](https://github.com/NaysanSaran/markov-chain/blob/master/img/markov-chain-five-states.png)
 
 
 ## Author
@@ -90,7 +92,9 @@ mc.draw("../img/markov-chain-five-states.png")
 Credit: [Naysan Saran](naysan.ca)
 Modification: [M Shaf Khattak].(https://github.com/SHaf373)
 
-Link to my [blog](https://naysan.ca/2020/07/08/drawing-state-transition-diagrams-in-python/).
+Related links in my blog:
+* [Original post](https://naysan.ca/2020/07/08/drawing-state-transition-diagrams-in-python/).
+* [Updated post](https://naysan.ca/2022/12/29/drawing-state-transition-diagrams-in-python-improved-version/).
 
 ## License
 
